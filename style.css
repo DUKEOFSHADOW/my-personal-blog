@@ -1,11 +1,50 @@
+/* 粒子动画容器样式 */
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #0f1624; /* 深色科技感背景 */
+    z-index: -1; /* 确保粒子效果在内容后面 */
+}
+
 /* 全局样式 */
 body {
-    font-family: Arial, sans-serif; /* 设置默认字体 */
-    line-height: 1.6; /* 设置行高 */
+    font-family: 'Orbitron', Arial, sans-serif; /* 使用科技感字体 */
+    line-height: 1.6;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4; /* 设置页面背景色 */
-    color: #333; /* 设置默认文字颜色 */
+    background: transparent;
+    color: #e0e0e0; /* 浅色文字 */
+    transition: all 0.3s ease; /* 添加过渡效果 */
+}
+
+/* 添加科技感链接样式 */
+a {
+    color: #0ff;
+    text-decoration: none;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: #00ffff;
+    text-shadow: 0 0 10px #00ffff;
+}
+
+a:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: #00ffff;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+a:hover:before {
+    transform: scaleX(1);
 }
 
 .container {
@@ -17,6 +56,9 @@ body {
 
 /* 头部样式 */
 header {
+    background: rgba(51, 51, 51, 0.8); /* 半透明背景 */
+    backdrop-filter: blur(10px); /* 毛玻璃效果 */
+    -webkit-backdrop-filter: blur(10px); /* Safari 支持 */
     background: #333; /* 头部背景色 */
     color: #fff; /* 头部文字颜色 */
     padding-top: 30px;
@@ -78,11 +120,34 @@ header nav {
 
 /* 主体内容样式 */
 main {
+    background: rgba(15, 22, 36, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     padding: 20px;
     width: 80%;
     margin: 20px auto;
-    background: #fff; /* 主体内容背景色 */
-    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* 添加阴影效果 */
+    border: 1px solid rgba(0, 255, 255, 0.1);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+main:before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #0ff, transparent, #0ff);
+    z-index: -1;
+    animation: borderGlow 3s linear infinite;
+}
+
+@keyframes borderGlow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 #hero {
@@ -107,9 +172,73 @@ main {
 
 /* 文章列表样式 */
 .post-list article {
-    border-bottom: 1px #ccc dotted;
-    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+    padding: 20px;
     margin-bottom: 20px;
+    background: rgba(15, 22, 36, 0.5);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.post-list article:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 255, 255, 0.2);
+    background: rgba(15, 22, 36, 0.8);
+}
+
+.post-list article:active {
+    transform: scale(0.98);
+}
+
+/* 添加点击波纹效果 */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(0, 255, 255, 0.4);
+    transform: scale(0);
+    animation: ripple 0.6s linear;
+    pointer-events: none;
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* 鼠标跟踪器样式 */
+.mouse-tracker {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #0ff;
+    border-radius: 50%;
+    pointer-events: none; /* 确保不影响其他元素交互 */
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease-out;
+    z-index: 9999;
+    box-shadow: 0 0 10px #0ff;
+}
+
+/* 文章悬停发光效果 */
+.article-glow {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.post-list article:hover .article-glow {
+    opacity: 1;
 }
 
 .post-list article:last-child {

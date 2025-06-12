@@ -11,8 +11,150 @@ const posts = [
 const POSTS_PER_PAGE = 3; // 每页显示的文章数量
 let currentPage = 1; // 当前页码
 
+// 添加点击波纹效果函数
+function createRipple(event) {
+    const element = event.currentTarget;
+    const ripple = document.createElement('span');
+    const rect = element.getBoundingClientRect();
+    
+    // 计算点击位置相对于元素的坐标
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    
+    ripple.className = 'ripple';
+    ripple.style.left = x + 'px';
+    ripple.style.top = y + 'px';
+    
+    element.appendChild(ripple);
+    
+    // 动画结束后移除波纹元素
+    ripple.addEventListener('animationend', () => {
+        ripple.remove();
+    });
+}
+
+// 添加鼠标移动跟踪效果
+function addMouseTracker() {
+    const tracker = document.createElement('div');
+    tracker.className = 'mouse-tracker';
+    document.body.appendChild(tracker);
+
+    document.addEventListener('mousemove', (e) => {
+        tracker.style.left = e.clientX + 'px';
+        tracker.style.top = e.clientY + 'px';
+    });
+}
+
 // DOMContentLoaded 事件确保在操作 DOM 前，HTML 已完全加载和解析
 document.addEventListener('DOMContentLoaded', () => {
+    addMouseTracker(); // 添加鼠标跟踪效果
+    // 初始化 particles.js
+    particlesJS('particles-js', {
+        "particles": {
+            "number": {
+                "value": 80, // 粒子数量
+                "density": {
+                    "enable": true,
+                    "value_area": 800 // 粒子分布区域
+                }
+            },
+            "color": {
+                "value": "#ffffff" // 粒子颜色
+            },
+            "shape": {
+                "type": "circle", // 粒子形状
+                "stroke": {
+                    "width": 0,
+                    "color": "#000000"
+                },
+                "polygon": {
+                    "nb_sides": 5
+                }
+            },
+            "opacity": {
+                "value": 0.5, // 粒子透明度
+                "random": false,
+                "anim": {
+                    "enable": false,
+                    "speed": 1,
+                    "opacity_min": 0.1,
+                    "sync": false
+                }
+            },
+            "size": {
+                "value": 3, // 粒子大小
+                "random": true,
+                "anim": {
+                    "enable": false,
+                    "speed": 40,
+                    "size_min": 0.1,
+                    "sync": false
+                }
+            },
+            "line_linked": {
+                "enable": true,
+                "distance": 150, // 连接线距离
+                "color": "#ffffff", // 连接线颜色
+                "opacity": 0.4,
+                "width": 1
+            },
+            "move": {
+                "enable": true,
+                "speed": 6, // 粒子移动速度
+                "direction": "none",
+                "random": false,
+                "straight": false,
+                "out_mode": "out",
+                "bounce": false,
+                "attract": {
+                    "enable": false,
+                    "rotateX": 600,
+                    "rotateY": 1200
+                }
+            }
+        },
+        "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+                "onhover": {
+                    "enable": true,
+                    "mode": "repulse" // 鼠标悬停效果
+                },
+                "onclick": {
+                    "enable": true,
+                    "mode": "push" // 鼠标点击效果
+                },
+                "resize": true
+            },
+            "modes": {
+                "grab": {
+                    "distance": 400,
+                    "line_linked": {
+                        "opacity": 1
+                    }
+                },
+                "bubble": {
+                    "distance": 400,
+                    "size": 40,
+                    "duration": 2,
+                    "opacity": 8,
+                    "speed": 3
+                },
+                "repulse": {
+                    "distance": 200,
+                    "duration": 0.4
+                },
+                "push": {
+                    "particles_nb": 4
+                },
+                "remove": {
+                    "particles_nb": 2
+                }
+            }
+        },
+        "retina_detect": true
+    });
+
     // 根据当前页面路径执行不同的初始化函数
     if (window.location.pathname.endsWith('index.html') || window.location.pathname === '/D:/Desktop/work/blog/') {
         loadLatestPosts(); // 加载首页最新文章
@@ -71,6 +213,22 @@ function displayPosts(postsToDisplay, page) {
             <p>${post.content.substring(0, 150)}...</p>
             <span>发布日期: ${post.date}</span>
         `;
+        
+        // 添加点击波纹效果
+        article.addEventListener('click', createRipple);
+        
+        // 添加悬停发光效果
+        article.addEventListener('mouseenter', (e) => {
+            const glow = document.createElement('div');
+            glow.className = 'article-glow';
+            e.target.appendChild(glow);
+        });
+        
+        article.addEventListener('mouseleave', (e) => {
+            const glow = e.target.querySelector('.article-glow');
+            if (glow) glow.remove();
+        });
+        
         postListContainer.appendChild(article);
     });
 }
