@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的个人博客</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="about.html">关于我</a></li>
+                <li><a href="blog.html">博客</a></li>
+                <li><a href="contact.html">联系我</a></li>
+            </ul>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="搜索文章...">
+                <button onclick="searchPosts()">搜索</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <h1>欢迎来到我的博客</h1>
+            <p>在这里分享我的想法、学习笔记和生活点滴。</p>
+        </section>
+
+        <section id="latest-posts">
+            <h2>最新文章</h2>
+            <!-- 文章列表将由 JavaScript 动态生成 -->
+            <div class="post-list">
+                <article>
+                    <h3><a href="post.html?id=1">示例文章标题 1</a></h3>
+                    <p>这是文章的简短描述...</p>
+                    <span>发布日期: 2024-07-27</span>
+                </article>
+                <article>
+                    <h3><a href="post.html?id=2">示例文章标题 2</a></h3>
+                    <p>这是另一篇文章的简短描述...</p>
+                    <span>发布日期: 2024-07-26</span>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 我的个人博客</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

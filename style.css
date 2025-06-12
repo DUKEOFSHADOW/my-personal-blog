@@ -1,0 +1,278 @@
+/* 全局样式 */
+body {
+    font-family: Arial, sans-serif; /* 设置默认字体 */
+    line-height: 1.6; /* 设置行高 */
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* 设置页面背景色 */
+    color: #333; /* 设置默认文字颜色 */
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 20px;
+}
+
+/* 头部样式 */
+header {
+    background: #333; /* 头部背景色 */
+    color: #fff; /* 头部文字颜色 */
+    padding-top: 30px;
+    min-height: 70px;
+    border-bottom: #0779e4 3px solid; /* 头部下边框颜色和样式 */
+}
+
+header a {
+    color: #fff; /* 头部链接文字颜色 */
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+header ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    float: left;
+}
+
+header li {
+    display: inline;
+    padding: 0 20px 0 20px;
+}
+
+header nav {
+    display: flex; /* 使用 flexbox 布局 */
+    justify-content: space-between; /* 两端对齐 */
+    align-items: center; /* 垂直居中 */
+    width: 80%;
+    margin: auto;
+}
+
+.search-container {
+    float: right;
+}
+
+.search-container input[type="text"] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+}
+
+.search-container button {
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+
+.search-container button:hover {
+    background: #ccc;
+}
+
+/* 主体内容样式 */
+main {
+    padding: 20px;
+    width: 80%;
+    margin: 20px auto;
+    background: #fff; /* 主体内容背景色 */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* 添加阴影效果 */
+}
+
+#hero {
+    min-height: 300px;
+    background: url('placeholder-hero.jpg') no-repeat center center/cover; /* 英雄区域背景图片 */
+    text-align: center;
+    color: #fff; /* 英雄区域文字颜色 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#hero h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+#hero p {
+    font-size: 1.2em;
+}
+
+/* 文章列表样式 */
+.post-list article {
+    border-bottom: 1px #ccc dotted;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.post-list article:last-child {
+    border-bottom: none;
+}
+
+.post-list h3 a {
+    text-decoration: none;
+    color: #333;
+}
+
+.post-list h3 a:hover {
+    color: #0779e4;
+}
+
+.post-list span {
+    display: block;
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* 文章详情页样式 */
+#post-detail h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+#post-detail .post-meta {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+#post-detail .post-content {
+    line-height: 1.8;
+}
+
+/* 关于我页面样式 */
+.avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* 圆形头像 */
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+#about-me h2 {
+    clear: both; /* 清除浮动，确保标题在头像下方 */
+    padding-top: 20px;
+}
+
+/* 联系我页面样式 */
+#contact-form-section label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#contact-form-section input[type="text"],
+#contact-form-section input[type="email"],
+#contact-form-section textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    box-sizing: border-box; /* 让 padding 和 border 不增加元素总宽度 */
+}
+
+#contact-form-section button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: #0779e4; /* 提交按钮背景色 */
+    color: #fff; /* 提交按钮文字颜色 */
+    border: none;
+    cursor: pointer;
+}
+
+#contact-form-section button[type="submit"]:hover {
+    background: #0056b3;
+}
+
+/* 评论系统样式 */
+#comments h2, #comments h3 {
+    margin-top: 30px;
+}
+
+#comment-list .comment {
+    border: 1px solid #eee;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #f9f9f9;
+}
+
+#comment-list .comment-author {
+    font-weight: bold;
+}
+
+#comment-list .comment-date {
+    font-size: 0.8em;
+    color: #777;
+    margin-left: 10px;
+}
+
+#comment-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#comment-form input[type="text"],
+#comment-form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+}
+
+#comment-form button[type="submit"] {
+    padding: 10px 15px;
+    background: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+#comment-form button[type="submit"]:hover {
+    background: #555;
+}
+
+/* 分页样式 */
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination button {
+    background-color: #333;
+    color: white;
+    border: 1px solid #ddd;
+    padding: 8px 16px;
+    text-decoration: none;
+    cursor: pointer;
+    margin: 0 4px;
+}
+
+.pagination button.active {
+    background-color: #0779e4;
+    color: white;
+    border: 1px solid #0779e4;
+}
+
+.pagination button:hover:not(.active) {
+    background-color: #ddd;
+    color: #333;
+}
+
+/* 页脚样式 */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #333; /* 页脚背景色 */
+    color: #fff; /* 页脚文字颜色 */
+    margin-top: 20px;
+}
